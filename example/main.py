@@ -11,7 +11,8 @@ from dataclasses import dataclass
 from time import sleep, time
 from shutil import get_terminal_size
 
-USE_MULTI_PROCESSING = False
+# Set to False to run it in the main process
+USE_MULTI_PROCESSING = True
 
 class Buffer(SharedMemoryHandlee):
     __slots__ = ("width", "height") + SharedMemoryHandlee.__slots__

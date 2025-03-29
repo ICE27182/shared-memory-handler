@@ -6,7 +6,7 @@ from multiprocessing import current_process
 from struct import Struct
 from uuid import uuid4
 from atexit import register
-from signal import signal, SIGINT, SIGTERM, SIGHUP, SIGQUIT, SIGABRT
+from signal import signal, SIGINT, SIGTERM, SIGABRT # TODO Catch more signals
 from abc import ABC
 
 MAX_NAME_LENGTH: Final = 30
@@ -47,8 +47,6 @@ def _signal_handler(signum, frame) -> None:
 register(_cleanup)
 signal(SIGINT, _signal_handler)
 signal(SIGTERM, _signal_handler)
-signal(SIGHUP, _signal_handler)
-signal(SIGQUIT, _signal_handler)
 signal(SIGABRT, _signal_handler)
 
 

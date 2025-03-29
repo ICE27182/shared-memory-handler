@@ -222,6 +222,7 @@ class SharedMemoryHandlee(ABC):
     Methods:
         data: Returns the memory view of the shared memory object.
         struct: Returns the struct format of the shared memory object.
+        size: Returns the size of SharedMemory.
         __len__: Returns the length of the shared memory object.
         __iter__: Returns an iterator over the shared memory object.
         get_at: Returns the value at a specific index.
@@ -302,7 +303,7 @@ class SharedMemoryHandlee(ABC):
         length = self._smh_length
         if index < 0:
             index = length - index
-        if not (0 < index < length):
+        if not (0 <= index < length):
             raise IndexError(f"Index out of range.")
         
         struct = self._smh_struct
